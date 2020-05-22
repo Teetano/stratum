@@ -12,13 +12,8 @@ if [ -f "/etc/onl/platform" ]; then
 fi
 
 # Setup port map
-PORT_MAP="/usr/share/stratum/$PLATFORM.json"
-if [ ! -f "$PORT_MAP" ]; then
-    echo "Cannot find port map file $PORT_MAP"
-    exit 255
-fi
 rm /usr/share/port_map.json || true
-ln -s $PORT_MAP /usr/share/port_map.json
+ln -s /etc/stratum/stratum_configs/$PLATFORM/port_map.json /usr/share/port_map.json
 
 # Load Kernel module
 rmmod bf_kdrv || true
