@@ -50,7 +50,7 @@ pkg_tar(
     name = "stratum_binaries",
     srcs = [
         ":stratum_bf",
-        "deb/stratum-entrypoint",
+        "start-stratum.sh",
     ],
     mode = "0755",
     package_dir = "/usr/bin",
@@ -77,11 +77,9 @@ pkg_tar(
 
 pkg_tar(
     name = "stratum_configs",
-    srcs = [
-        "deb/stratum.flags",
-        "deb/stratum_bf.env",
+    deps = [
+        "//stratum/hal/config:all_configs_tar",
     ],
-    mode = "0644",
     package_dir = "/etc/stratum",
 )
 
